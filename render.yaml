@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: talisman-tour-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: TOUR_DATA_DIR
+        value: /data
+      - key: TOUR_AUTO_REFRESH
+        value: "1"
+      - key: TOUR_MAX_SAVED_JOBS
+        value: "100"
+      - key: TOUR_API_KEY
+        generateValue: true
